@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
+// Extended Error class used here as a middleware error.
 import HttpError from '../utils/httpError'
 
 const httpErrorMiddleware = (error: HttpError, request: Request, response: Response, next: NextFunction) => {
