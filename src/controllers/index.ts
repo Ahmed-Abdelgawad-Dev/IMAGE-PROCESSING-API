@@ -1,6 +1,5 @@
 import sharp from 'sharp'
-import { MYImages, IMAGES_PATH, IMAGES_OUTPUT_PATH } from '../imagConstants/index'
-
+import { MYImages, IMAGES_PATH, IMAGES_OUTPUT_PATH } from '../constants/index'
 
 // Recommended Async / await implementation.
 const ResizeImg = async (width: number, height: number, filename: string): Promise<void> => {

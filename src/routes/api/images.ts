@@ -21,7 +21,7 @@ routes.get('/resize', sizeValidator(), validatingMiddleware, async (request: Req
             // Resize the target image and save it
             await ResizeImg(widthValue, heightValue, filename)
         }
-        response.render('resize', { widthValue, heightValue, new_images: `${filename}_${width}_${height}.jpg` })
+        response.render('resize', { widthValue, heightValue, new_images: `${filename}_${widthValue}_${heightValue}.jpg` })
     } catch (error) {
         throw new Error(`Error: Sorry can not resize the image}`)
         console.log(error)
@@ -38,3 +38,5 @@ routes.get('/preview', displayValidator(), validatingMiddleware, async (request:
         throw new Error('Error: Something went wrong!!! ')
     }
 })
+
+export default routes

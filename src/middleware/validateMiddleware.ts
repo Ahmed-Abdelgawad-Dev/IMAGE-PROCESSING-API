@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { ValidationError, validationResult, query } from 'express-validator'
-import { MYImages } from '../Constants'
+import { MYImages } from '../constants/index'
 
 // query([fields, message])
 //https://express-validator.github.io/docs/check-api.html#queryfields-message

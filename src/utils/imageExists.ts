@@ -2,7 +2,7 @@
 // fs-extra adds file system methods that aren't included in the native fs module
 // Adds promise support to the fs methods
 import fs from 'fs-extra'
-import { IMAGES_OUTPUT_PATH } from '../Constants'
+import { IMAGES_OUTPUT_PATH } from '../constants/index'
 
 const imageExists = async (width: number, height: number, filename: string): Promise<boolean> => {
     const pathToImage = `${IMAGES_OUTPUT_PATH}/${filename}_${width}_${height}.jpg`

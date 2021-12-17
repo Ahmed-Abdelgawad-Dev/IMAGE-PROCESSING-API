@@ -25,13 +25,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var dotenv = __importStar(require("dotenv"));
 var morgan_1 = __importDefault(require("morgan"));
+// import helmet from 'helmet'
+var path_1 = __importDefault(require("path"));
+// Adding a security later to the environment variables
 dotenv.config();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3001;
 // Express App Object.
 var app = (0, express_1.default)();
+//Make static files visible dir for express.
+app.use('/images', express_1.default.static(path_1.default.join(__dirname, 'images')));
 // HTTP request logger middleware
 // short: Shorter than default, also including response time.
 app.use((0, morgan_1.default)('short'));
+// // HTTP security middleware
+// app.use(helme())
 // Root endpoint
 app.get('/', function (req, res) {
     res.json({ message: 'This is the root endpoint in json format' });

@@ -1,8 +1,8 @@
-import express, { Router } from 'express'
-import imageRoutes from './api/images'
+import express from 'express'
+import routesOfImages from './api/images'
 
-const routes = Router()
+const routes = express.Router()
 
-routes.use('/images', imageRoutes)
+routes.use('/images', routesOfImages)
 
 export default routes
