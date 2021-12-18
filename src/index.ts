@@ -18,6 +18,10 @@ const app: Application = express()
 app.use('/images', express.static(path.join(__dirname, 'images')))
 // app.use('/static', express.static(path.join(__dirname, 'public')))
 
+// https://www.npmjs.com/package/ejs
+// Set EJS as templating engine
+// https://www.geeksforgeeks.org/use-ejs-as-template-engine-in-node-js/
+// Alternatives are many, Exp: jinja-js, a clone from the python's jinja
 app.set('view engine', 'ejs')
 app.set('views', path.resolve(__dirname, 'views'))
 

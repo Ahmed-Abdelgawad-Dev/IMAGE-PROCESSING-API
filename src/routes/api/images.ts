@@ -4,13 +4,30 @@ import {
     sizeValidator,
     displayValidator,
 } from '../../middleware/validateMiddleware'
-import ResizeImg from '../../controllers'
+import ResizeImg from '../../core'
 import imageExists from '../../utils/imageExists'
 
 const routes = Router()
 
+
 routes.get(
-    '/resize',
+    '/display',
+    displayValidator(),
+    validatingMiddleware,
+    async (request: Request, response: Response) => {
+        // Obtaining the filename of the query
+        const targetFilename: string = request.query.filename as string
+        try {
+            response.render('main', { new_images: `${targetFilename}.jpg` })
+        } catch (error) {
+            throw new Error('Error: Something went wrong!!! ')
+        }
+    },
+)
+
+
+routes.get(
+    '/resize_image',
     sizeValidator(),
     validatingMiddleware,
     async (request: Request, response: Response) => {
@@ -29,28 +46,13 @@ routes.get(
                 // Resize the target image and save it
                 await ResizeImg(width, height, filename)
             }
-            response.render('resize', {
+            response.render('resize_image', {
                 width,
                 height,
                 new_images: `${filename}_${width}_${height}.jpg`,
             })
         } catch (error) {
             throw new Error(`Error: Sorry can not resize the image}`)
-        }
-    },
-)
-
-routes.get(
-    '/preview',
-    displayValidator(),
-    validatingMiddleware,
-    async (request: Request, response: Response) => {
-        // Obtaining the filename of the query
-        const targetFilename: string = request.query.filename as string
-        try {
-            response.render('index', { new_images: `${targetFilename}.jpg` })
-        } catch (error) {
-            throw new Error('Error: Something went wrong!!! ')
         }
     },
 )
