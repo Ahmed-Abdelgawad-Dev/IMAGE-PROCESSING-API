@@ -22,29 +22,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var express_1 = __importDefault(require("express"));
-var dotenv = __importStar(require("dotenv"));
-var morgan_1 = __importDefault(require("morgan"));
-// import helmet from 'helmet'
-var path_1 = __importDefault(require("path"));
+const express_1 = __importDefault(require("express"));
+const path_1 = __importDefault(require("path"));
+const dotenv = __importStar(require("dotenv"));
+const morgan_1 = __importDefault(require("morgan"));
+const helmet_1 = __importDefault(require("helmet"));
+const routes_1 = __importDefault(require("./routes"));
 // Adding a security later to the environment variables
 dotenv.config();
-var PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001 || 3002 || 3003;
+// const PORT = 3000
 // Express App Object.
-var app = (0, express_1.default)();
+const app = (0, express_1.default)();
 //Make static files visible dir for express.
 app.use('/images', express_1.default.static(path_1.default.join(__dirname, 'images')));
+// app.use('/static', express.static(path.join(__dirname, 'public')))
+app.set('view engine', 'ejs');
+app.set('views', path_1.default.resolve(__dirname, 'views'));
 // HTTP request logger middleware
 // short: Shorter than default, also including response time.
 app.use((0, morgan_1.default)('short'));
-// // HTTP security middleware
-// app.use(helme())
+// HTTP security middleware
+// https://www.npmjs.com/package/helmet
+app.use((0, helmet_1.default)());
+// Adding api endpoint
+app.use('/api', routes_1.default);
 // Root endpoint
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
     res.json({ message: 'This is the root endpoint in json format' });
 });
 // Start the backend server.
-app.listen(PORT, function () {
-    console.log("Server is running at port:".concat(PORT));
+app.listen(PORT, () => {
+    console.log(`Server is running at port:${PORT}`);
 });
 exports.default = app;

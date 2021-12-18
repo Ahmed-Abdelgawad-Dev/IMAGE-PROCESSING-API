@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx tsc && jasmine",
-    "start:dev": "nodemon --watch './**/*.ts' --exec 'ts-node' ./src/index.ts",
+    "test": "npx tsc && yarn jasmine",
+    "start": "nodemon --watch './**/*.ts' --exec 'ts-node' ./src/index.ts",
     "clean": "rimraf build/",
+    "copy:screens": "copyfiles -f src/screens/* build/screens",
+    "copy:images": "copyfiles -f src/images/*.jpg build/images",
     "build": "yarn clean && npx tsc",
-    "start:prod": "npm run build && nodemon build/index.js",
+    "prod": "npm run build && nodemon build/index.js",
     "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx}'",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "jasmine": "jasmine"
   },
   "keywords": [],
   "author": "",

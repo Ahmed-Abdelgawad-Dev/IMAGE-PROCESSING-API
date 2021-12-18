@@ -7,21 +7,21 @@ import imageExists from '../../utils/imageExists'
 const routes = Router()
 
 routes.get('/resize', sizeValidator(), validatingMiddleware, async (request: Request, response: Response) => {
-    // Get height value as an integer
-    const heightValue: number = parseInt(request.query.height as string, 36)
+    // Get height value as an integer  |
+    const height: number = parseInt(request.query.height as string, 10) //radix must be 10 for having right readable image values
     // Get width as an integer
-    const widthValue: number = parseInt(request.query.width as string, 36)
+    const width: number = parseInt(request.query.width as string, 10) // same radix too
     // Get filename
     const filename: string = (request.query.filename as string)
     try {
         // Is the image exists?
-        const imageExistFunc = await imageExists(widthValue, heightValue, filename)
+        const imageExistFunc = await imageExists(width, height, filename)
         // If not?
         if (!imageExistFunc) {
             // Resize the target image and save it
-            await ResizeImg(widthValue, heightValue, filename)
+            await ResizeImg(width, height, filename)
         }
-        response.render('resize', { widthValue, heightValue, new_images: `${filename}_${widthValue}_${heightValue}.jpg` })
+        response.render('resize', { width, height, new_images: `${filename}_${width}_${height}.jpg` })
     } catch (error) {
         throw new Error(`Error: Sorry can not resize the image}`)
         console.log(error)

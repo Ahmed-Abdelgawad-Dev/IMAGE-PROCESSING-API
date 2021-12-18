@@ -1,4 +1,3 @@
-
 // Extending the Error Class
 class HttpError extends Error {
     status: number
@@ -9,5 +8,4 @@ class HttpError extends Error {
         this.message = message
     }
 }
-
 export default HttpError
