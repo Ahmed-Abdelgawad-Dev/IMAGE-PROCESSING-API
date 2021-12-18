@@ -7,7 +7,7 @@ import imageExists from '../../utils/imageExists'
 const routes = Router()
 
 routes.get('/resize', sizeValidator(), validatingMiddleware, async (request: Request, response: Response) => {
-    // Get height value as an integer  |
+    // Get height value as an integer  
     const height: number = parseInt(request.query.height as string, 10) //radix must be 10 for having right readable image values
     // Get width as an integer
     const width: number = parseInt(request.query.width as string, 10) // same radix too

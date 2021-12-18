@@ -9,7 +9,7 @@ const controllers_1 = __importDefault(require("../../controllers"));
 const imageExists_1 = __importDefault(require("../../utils/imageExists"));
 const routes = (0, express_1.Router)();
 routes.get('/resize', (0, validateMiddleware_1.sizeValidator)(), validateMiddleware_1.validatingMiddleware, async (request, response) => {
-    // Get height value as an integer  |
+    // Get height value as an integer  
     const height = parseInt(request.query.height, 10); //radix must be 10 for having right readable image values
     // Get width as an integer
     const width = parseInt(request.query.width, 10); // same radix too
