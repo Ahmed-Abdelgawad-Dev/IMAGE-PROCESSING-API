@@ -27,6 +27,7 @@ const path_1 = __importDefault(require("path"));
 const dotenv = __importStar(require("dotenv"));
 const morgan_1 = __importDefault(require("morgan"));
 const helmet_1 = __importDefault(require("helmet"));
+const errorMiddleware_1 = __importDefault(require("./middleware/errorMiddleware"));
 const routes_1 = __importDefault(require("./routes"));
 // Adding a security later to the environment variables
 dotenv.config();
@@ -34,7 +35,7 @@ const PORT = process.env.PORT || 3001 || 3002 || 3003;
 // const PORT = 3000
 // Express App Object.
 const app = (0, express_1.default)();
-//Make static files visible dir for express.
+// Make static files visible dir for express.
 app.use('/images', express_1.default.static(path_1.default.join(__dirname, 'images')));
 // app.use('/static', express.static(path.join(__dirname, 'public')))
 app.set('view engine', 'ejs');
@@ -45,6 +46,8 @@ app.use((0, morgan_1.default)('short'));
 // HTTP security middleware
 // https://www.npmjs.com/package/helmet
 app.use((0, helmet_1.default)());
+// Middleware error handler
+app.use(errorMiddleware_1.default);
 // Adding api endpoint
 app.use('/api', routes_1.default);
 // Root endpoint

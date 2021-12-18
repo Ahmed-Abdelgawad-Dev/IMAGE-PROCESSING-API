@@ -7,7 +7,7 @@ const supertest_1 = __importDefault(require("supertest")); // Third party for te
 const index_1 = __importDefault(require("../index"));
 // create a request object to test the endpoint
 const request = (0, supertest_1.default)(index_1.default);
-describe('Testing endpoint\'s response', () => {
+describe("Testing endpoint's response", () => {
     it('Test endpoint root.', async () => {
         const resp = await request.get('/');
         expect(resp.status).toBe(200);

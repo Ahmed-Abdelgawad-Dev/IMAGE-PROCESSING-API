@@ -14,10 +14,9 @@ const PORT = process.env.PORT || 3001 || 3002 || 3003
 // Express App Object.
 const app: Application = express()
 
-//Make static files visible dir for express.
+// Make static files visible dir for express.
 app.use('/images', express.static(path.join(__dirname, 'images')))
 // app.use('/static', express.static(path.join(__dirname, 'public')))
-
 
 app.set('view engine', 'ejs')
 app.set('views', path.resolve(__dirname, 'views'))
@@ -30,6 +29,9 @@ app.use(morgan('short'))
 // https://www.npmjs.com/package/helmet
 app.use(helmet())
 
+// Middleware error handler
+app.use(httpErrorMiddleware)
+
 // Adding api endpoint
 app.use('/api', routes)
 
@@ -37,7 +39,6 @@ app.use('/api', routes)
 app.get('/', (req: Request, res: Response) => {
     res.json({ message: 'This is the root endpoint in json format' })
 })
-
 
 // Start the backend server.
 app.listen(PORT, () => {

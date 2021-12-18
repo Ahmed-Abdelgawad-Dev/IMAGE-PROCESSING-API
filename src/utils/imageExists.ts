@@ -4,7 +4,11 @@
 import fs from 'fs-extra'
 import { IMAGES_OUTPUT_PATH } from '../constants/index'
 
-const imageExists = async (width: number, height: number, filename: string): Promise<boolean> => {
+const imageExists = async (
+    width: number,
+    height: number,
+    filename: string,
+): Promise<boolean> => {
     const pathToImage = `${IMAGES_OUTPUT_PATH}/${filename}_${width}_${height}.jpg`
     try {
         // https://github.com/jprichardson/node-fs-extra/blob/HEAD/docs/ensureFile.md

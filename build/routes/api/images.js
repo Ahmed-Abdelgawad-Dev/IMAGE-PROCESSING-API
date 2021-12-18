@@ -9,10 +9,11 @@ const controllers_1 = __importDefault(require("../../controllers"));
 const imageExists_1 = __importDefault(require("../../utils/imageExists"));
 const routes = (0, express_1.Router)();
 routes.get('/resize', (0, validateMiddleware_1.sizeValidator)(), validateMiddleware_1.validatingMiddleware, async (request, response) => {
-    // Get height value as an integer  
-    const height = parseInt(request.query.height, 10); //radix must be 10 for having right readable image values
+    // Get height value as an integer
+    // radix must be 10 for having right readable image values
+    const height = parseInt(request.query.height, 10);
     // Get width as an integer
-    const width = parseInt(request.query.width, 10); // same radix too
+    const width = parseInt(request.query.width, 10);
     // Get filename
     const filename = request.query.filename;
     try {
@@ -23,11 +24,14 @@ routes.get('/resize', (0, validateMiddleware_1.sizeValidator)(), validateMiddlew
             // Resize the target image and save it
             await (0, controllers_1.default)(width, height, filename);
         }
-        response.render('resize', { width, height, new_images: `${filename}_${width}_${height}.jpg` });
+        response.render('resize', {
+            width,
+            height,
+            new_images: `${filename}_${width}_${height}.jpg`,
+        });
     }
     catch (error) {
         throw new Error(`Error: Sorry can not resize the image}`);
-        console.log(error);
     }
 });
 routes.get('/preview', (0, validateMiddleware_1.displayValidator)(), validateMiddleware_1.validatingMiddleware, async (request, response) => {
