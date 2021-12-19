@@ -6,18 +6,22 @@ A project uses Node & Express combo to build a server with a scalable code and a
 
 The project can be built and run as follow:
 
-### 1. Installing the dependencies:
+### 1. Installing the dependencies
 
 `yarn` or `npm i`
+`yarn prod`
 
-### 2. Production ready build folder:
+After `yarn prod` all scripts should pass successfully.
+
+### 2. Production ready build folder
 
 `yarn prod`
 
-This command will compile typeScript code into JavaScript  in the `./build` folder and make a production ready code.
+This command will compile typeScript code into JavaScript in the `./build` folder and make a production ready code.
 
-### 3. Start the Server:
+### 3. Start the Server
 
+Make sure to run `yarn prod` before starting the server.
 `yarn start`
 
 Starting the server running on port `3000`.
@@ -36,7 +40,7 @@ Starting the server running on port `3000`.
 
 `yarn format`
 
-###Note:  run  `pkill -9 node` in the terminal in case port 3000 is busy.
+###Note: run `pkill -9 node` in the terminal in case port 3000 is busy.
 
 ## Endpoint
 
@@ -62,12 +66,12 @@ From pic1 to pic5
 
 ### Functionality
 
-- User can query endpoint using various params and queries to retrieve an image with a specified height and width.
-- Images requested will be cached in new_image file without reprocessing the size again.
+-   User can query endpoint using various params and queries to retrieve an image with a specified height and width.
+-   Images requested will be cached in new_image file without reprocessing the size again.
 
 ## Built With
 
-- [NodeJS](https://nodejs.org/en/) - The JavaScript runtime.
-- [Express](https://expressjs.com/) - The JavaScript web framework for back-end.
-- [TypeScript](https://www.typescriptlang.org/) - Microsoft superset of JavaScript.
-- [Sharp](https://sharp.pixelplumbing.com/) - NodeJS package for processing images.
+-   [NodeJS](https://nodejs.org/en/) - The JavaScript runtime.
+-   [Express](https://expressjs.com/) - The JavaScript web framework for back-end.
+-   [TypeScript](https://www.typescriptlang.org/) - Microsoft superset of JavaScript.
+-   [Sharp](https://sharp.pixelplumbing.com/) - NodeJS package for processing images.
