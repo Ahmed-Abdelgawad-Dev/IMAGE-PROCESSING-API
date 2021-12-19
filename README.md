@@ -8,7 +8,7 @@ The project can be built and run as follow:
 
 ### 1. Installing the dependencies
 
-`yarn` or `npm i`
+`yarn` or `npm i` then
 `yarn prod`
 
 After `yarn prod` all scripts should pass successfully.
