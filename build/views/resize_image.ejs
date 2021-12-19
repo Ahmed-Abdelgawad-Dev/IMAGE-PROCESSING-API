@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Image Processing API: Resizing page</title>
+</head>
+
+<body>
+    <div>
+        <h3 style="text-align: center;">This is resized Image</h3>
+        <% if (new_images) { %>
+            <!-- Process the image with custom values -->
+            <img src="http://localhost:3000/images/new_images/<%= new_images %>" alt="resized image"
+                width="<%= width %>" height="<%= height %>" />
+            <% } %>
+    </div>
+
+</body>
+
+</html>

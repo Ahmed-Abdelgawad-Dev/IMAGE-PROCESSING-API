@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx tsc && yarn jasmine",
+    "test": "pkill -9 node && npx tsc && yarn jasmine",
     "start": "nodemon --watch './**/*.ts' --exec 'ts-node' ./src/index.ts",
     "clean": "rimraf build/",
     "cp:views": "copyfiles -f src/views/* build/views",
@@ -50,7 +50,6 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.4",
     "jinja-js": "^0.1.8",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
