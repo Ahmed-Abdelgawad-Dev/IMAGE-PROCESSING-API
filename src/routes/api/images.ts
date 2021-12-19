@@ -9,7 +9,6 @@ import imageExists from '../../utils/imageExists'
 
 const routes = Router()
 
-
 routes.get(
     '/display',
     displayValidator(),
@@ -24,7 +23,6 @@ routes.get(
         }
     },
 )
-
 
 routes.get(
     '/resize_image',

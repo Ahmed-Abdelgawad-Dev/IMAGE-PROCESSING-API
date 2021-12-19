@@ -4,14 +4,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const supertest_1 = __importDefault(require("supertest")); // Third party for testing endpoint
+const fs_1 = __importDefault(require("fs"));
 const index_1 = __importDefault(require("../index"));
 const imageExists_1 = __importDefault(require("../utils/imageExists"));
-const fs_1 = __importDefault(require("fs"));
 const constants_1 = require("../constants");
-// create a request object to test the endpoint
+// A request object for testing the endpoint.
 const request = (0, supertest_1.default)(index_1.default);
 // Endpoint tests.
-describe("Testing endpoints:", () => {
+describe('Testing endpoints:', () => {
     it('Root endpoints 200 response.', async () => {
         const resp = await request.get('/');
         expect(resp.status).toBe(200);
@@ -23,6 +23,7 @@ describe("Testing endpoints:", () => {
     it('Cached image functionality works.', async () => {
         const resp = await request.get('/api/images/resize_image/?width=200&height=200&filename=pic2');
         expect(fs_1.default.existsSync(`${constants_1.IMAGES_OUTPUT_PATH}/pic2_200_200.jpg`)).toBeTruthy();
+        expect(resp.status).toBe(200);
     });
     it('Displaying pics endpoint.', async () => {
         const resp = await request.get('/api/images/display/?filename=pic2');

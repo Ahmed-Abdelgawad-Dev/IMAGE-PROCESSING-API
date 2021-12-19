@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "pkill -9 node && npx tsc && yarn jasmine",
+    "test": "npx tsc && yarn jasmine",
     "start": "nodemon --watch './**/*.ts' --exec 'ts-node' ./src/index.ts",
     "clean": "rimraf build/",
     "cp:views": "copyfiles -f src/views/* build/views",
